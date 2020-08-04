@@ -1,0 +1,153 @@
+/*
+Theme Name:     Kleo Child
+Theme URI:
+Description:    Child theme for Kleo
+Author:         SeventhQueen
+Author URI:     http://seventhqueen.com
+Template:       kleo
+Tags:  one-column, two-columns, right-sidebar, fluid-layout, custom-menu, featured-images, post-formats, sticky-post, translation-ready
+License: GNU General Public License
+License URI: license.txt
+*/
+
+/*
+* Please add your custom styles below
+*/
+
+
+.vc_general.vc_cta3.home-intro-content{
+    border-radius: 0 !important;
+    border: none;
+    margin-right: -4.5rem;
+    background: rgb(242, 249, 249);
+}
+.vc_general.vc_cta3.home-intro-content p{
+    font-size: 25px;
+}
+div.how-it-works-content{
+    display: flex;
+}
+div.how-it-works-content h3.figure{
+    background: #444444;
+    margin-bottom: 12.5rem;
+    padding: 0 .6rem;
+    color: #efd1cf;
+    font-size: 35px;
+    font-style: inherit;
+    font-family: sans-serif;
+    font-weight: 500;
+    border-radius: 6px;
+}
+div.how-it-works-content .text-content{
+    padding-left: 1rem;
+    padding-right: 3.5rem;
+}
+
+div.how-it-works-content .text-content h3{
+    font-size: 24px;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 500 !important;
+}
+
+
+div.how-it-works-content .text-content p{
+    color: #555555;
+    font-size: 14px;
+    font-family: sans-serif;
+
+}
+.standard-list li{
+    list-style: none !important;
+}
+
+.standard-list li:before{
+    display: contents;
+}
+
+#home-list-items-first{
+    color: #333000;
+    font-weight: 400;
+}
+
+.home-list-items{
+    padding-left: 2rem;
+}
+.hr-title abbr{
+    padding: 0 !important;
+}
+
+.hr-title{
+    border-top-color: #3db2c3 !important;
+    margin: -9px auto 0px;
+}
+
+.home-page .kleo-page .main-title{
+    display: none;
+}
+
+.recent-project-grid{
+    margin: auto 0;
+}
+.recent-project-title h2{
+    margin-bottom: 0;
+}
+.recent-project-title h2 a{
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.recent-project-author-location,
+.recent-project-year-type{
+    margin: auto 0;
+}
+
+.recent-project-author-location .col-sm-6,
+.recent-project-year-type .col-sm-6{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.recent-project-author-location .col-sm-6 p,
+.recent-project-year-type .col-sm-6 p{
+    margin-bottom: 0;
+}
+
+.recent-project-author-location .col-sm-6 b,
+.recent-project-author-location .col-sm-6 p,
+.recent-project-year-type .col-sm-6 b,
+.recent-project-year-type .col-sm-6 p{
+    font-size: 11px;
+}
+
+
+#nf-form-2-cont .nf-form-wrap .nf-form-layout form #nf-field-11{
+    background: red;
+}
+
+.wpcf7-form-control-wrap.your-name textarea{
+    rows:5;
+}
+
+
+
+
+/*Media queries*/
+
+@media (max-width: 767px){
+    .vc_general.vc_cta3.home-intro-content{
+        border-radius: 0 !important;
+        border: none;
+        margin-left: 0 !important;
+        background: rgb(242, 249, 249);
+    }
+    .vc_general.vc_cta3.home-intro-content p{
+        font-size: 20px;
+    }
+    /*.recent-project-author-location,*/
+    /*.recent-project-year-type{*/
+    /*    margin: auto 0;*/
+    /*    display: flex;*/
+    /*}*/
+}
+
+
