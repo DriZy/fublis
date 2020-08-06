@@ -1,109 +1,154 @@
 /  registration modal /
 jQuery(function ($) {
     $(document).ready(function () {
-    //     $(".journalist-signin ").on('click', function (e) {
-    //         e.preventDefault();
-    //         $('#wpcf7-f8685-o1 form').trigger("reset");
-    //
-    //         // console.log('I got here');
-    //         // fields to hide from registration form for journalists
-    //         $('.wpcf7-form-control-wrap.full-name').hide();
-    //         $('#full-name').hide().find('input, input').prop('disabled', true);
-    //         $('.wpcf7-form-control-wrap.WorkEmail').hide();
-    //         $('#work-email').hide().find('input, input').prop('disabled', true);
-    //
-    //         // fields to show on registration form for journalists
-    //         $('.wpcf7-form-control-wrap.your-name').show();
-    //         $('#your-name').show().find('input, input').prop('disabled', false);
-    //         $('.wpcf7-form-control-wrap.your-email').show();
-    //         $('#your-email').show().find('input, input').prop('disabled', false);
-    //         $('.wpcf7-form-control-wrap.linkedin-url').show();
-    //         $('#linkedin-url').show().find('input, input').prop('disabled', false);
-    //         $("#user-role").val("admin");
-    //
-    //     });
-    //
-    //     $(".designer-signin").on('click', function (e) {
-    //         e.preventDefault();
-    //         $('#wpcf7-f8685-o1 form').trigger("reset");
-    //
-    //         // console.log('I got here');
-    //         // fields to hide from registration form for journalists
-    //         $('.wpcf7-form-control-wrap.full-name').hide();
-    //         $('#full-name').hide().find('input, input').prop('disabled', true);
-    //         $('.wpcf7-form-control-wrap.WorkEmail').hide();
-    //         $('#work-email').hide().find('input, input').prop('disabled', true);
-    //
-    //         // fields to show on registration form for journalists
-    //         $('.wpcf7-form-control-wrap.your-name').show();
-    //         $('#your-name').show().find('input, input').prop('disabled', false);
-    //         $('.wpcf7-form-control-wrap.your-email').show();
-    //         $('#your-email').show().find('input, input').prop('disabled', false);
-    //         $('.wpcf7-form-control-wrap.linkedin-url').show();
-    //         $('#linkedin-url').show().find('input, input').prop('disabled', false);
-    //         $("#user-role").val("designer");
-    //
-    //     });
-    //
-    //     $(".architect-signin").on('click', function (e) {
-    //         e.preventDefault();
-    //         console.log('I got here');
-    //         $('#wpcf7-f8685-o1 form').trigger("reset");
-    //
-    //
-    //         // fields to hide from registration form for architects
-    //         $('.wpcf7-form-control-wrap.your-name').hide();
-    //         $('#your-name').hide().find('input, input').prop('disabled', false);
-    //         $('.wpcf7-form-control-wrap.your-email').hide();
-    //         $('#your-email').hide().find('input, input').prop('disabled', false);
-    //         $('.wpcf7-form-control-wrap.linkedin-url').hide();
-    //         $('#linkedin-url').hide().find('input, input').prop('disabled', false);
-    //
-    //         // fields to show on registration form for architects
-    //         $('.wpcf7-form-control-wrap.full-name').show();
-    //         $('#full-name').show().find('input, input').prop('disabled', true);
-    //         $('.wpcf7-form-control-wrap.WorkEmail').show();
-    //         $('#work-email').show().find('input, input').prop('disabled', true);
-    //         $("#user-role").val("architect");
-    //     });
-    //
-    //     $(".abrand-signin").on('click', function (e) {
-    //         e.preventDefault();
-    //         console.log('I got here');
-    //         $('#wpcf7-f8685-o1 form').trigger("reset");
-    //
-    //
-    //         // fields to hide from registration form for architects
-    //         $('.wpcf7-form-control-wrap.your-name').hide();
-    //         $('#your-name').hide().find('input, input').prop('disabled', false);
-    //         $('.wpcf7-form-control-wrap.your-email').hide();
-    //         $('#your-email').hide().find('input, input').prop('disabled', false);
-    //         $('.wpcf7-form-control-wrap.linkedin-url').hide();
-    //         $('#linkedin-url').hide().find('input, input').prop('disabled', false);
-    //
-    //         // fields to show on registration form for architects
-    //         $('.wpcf7-form-control-wrap.full-name').show();
-    //         $('#full-name').show().find('input, input').prop('disabled', true);
-    //         $('.wpcf7-form-control-wrap.WorkEmail').show();
-    //         $('#work-email').show().find('input, input').prop('disabled', true);
-    //         $("#user-role").val("brand");
-    //     });
-
-
-        $("#wpcf7-f8685-o1 form").on('submit', function (e) {
+        let modal_title = '';
+        $("#architect-reg").on('click', function (e) {
             e.preventDefault();
-            let company_name = $('input[name = "company-name"]').val() ? $('input[name = "company-name"]').val() : "";
+            console.log("I got here");
+            $('#registrationModal form').trigger("reset");
+            $("#registrationModal").show();
+
+            // console.log('I got here');
+            // fields to hide from registration form for architects
+            $('#registrationModal form .your-name').hide();
+            $('#your-name').hide().find('input, input').removeAttr('required').prop('disabled', true);
+            $('#registrationModal form .your-email').hide();
+            $('#your-email').hide().find('input, input').removeAttr('required').prop('disabled', true);
+            $('#registrationModal form .linkedin').hide();
+            $('#linkedin').hide().find('input, input').removeAttr('required').prop('disabled', true);
+
+            //fields to show on registration form for architects
+            $('#registrationModal form .full-name').show();
+            $('#full-name').show().find('input, input').attr('required', true).prop('disabled', false);
+            $('#registrationModal form .work-email').show();
+            $('#work-email').show().find('input, input').attr('required', true).prop('disabled', false);
+            $("#user-role").val("architect");
+
+            // $('#reg-modal-title').append('<h4 class="modal-title">Register as Architect</h4>');
+
+        });
+
+        $("#journalist-reg").on('click', function (e) {
+            e.preventDefault();
+            console.log("I got here");
+            $('#registrationModal form').trigger("reset");
+            $("#registrationModal").show();
+
+            // console.log('I got here');
+            // fields to hide from registration form for journalists
+            $('#registrationModal form .full-name').hide();
+            $('#full-name').hide().find('input, input').removeAttr('required').prop('disabled', true);
+            $('#registrationModal form .work-email').hide();
+            $('#work-email').hide().find('input, input').removeAttr('required').prop('disabled', true);
+
+            //fields to show on registration form for journalists
+            $('#registrationModal form .your-name').show();
+            $('#your-name').show().find('input, input').attr('required', true).prop('disabled', false);
+            $('#registrationModal form .your-email').show();
+            $('#your-email').show().find('input, input').attr('required', true).prop('disabled', false);
+            $('#registrationModal form .linkedin').show();
+            $('#linkedin').show().find('input, input').attr('required', true).prop('disabled', false);
+            $("#user-role").val("journalist");
+        });
+
+        $("#designer-reg").on('click', function (e) {
+            e.preventDefault();
+            console.log("I got here");
+            $('#registrationModal form').trigger("reset");
+            $("#registrationModal").show();
+
+            // fields to hide from registration form for journalists
+            $('#registrationModal form .full-name').hide();
+            $('#full-name').hide().find('input, input').removeAttr('required').prop('disabled', true);
+            $('#registrationModal form .work-email').hide();
+            $('#work-email').hide().find('input, input').removeAttr('required').prop('disabled', true);
+
+            //fields to show on registration form for journalists
+            $('#registrationModal form .your-name').show();
+            $('#your-name').show().find('input, input').attr('required', true).prop('disabled', false);
+            $('#registrationModal form .your-email').show();
+            $('#your-email').show().find('input, input').attr('required', true).prop('disabled', false);
+            $('#registrationModal form .linkedin').show();
+            $('#linkedin').show().find('input, input').attr('required', true).prop('disabled', false);
+            $("#user-role").val("designer");
+        });
+
+
+        $("#brand-reg").on('click', function (e) {
+            e.preventDefault();
+            console.log("I got here");
+            $('#registrationModal form').trigger("reset");
+            $("#registrationModal").show();
+
+            // console.log('I got here');
+            // fields to hide from registration form for architects
+            $('#registrationModal form .your-name').hide();
+            $('#your-name').hide().find('input, input').removeAttr('required').prop('disabled', true);
+            $('#registrationModal form .your-email').hide();
+            $('#your-email').hide().find('input, input').removeAttr('required').prop('disabled', true);
+            $('#registrationModal form .linkedin').hide();
+            $('#linkedin').hide().find('input, input').removeAttr('required').prop('disabled', true);
+
+            //fields to show on registration form for architects
+            $('#registrationModal form .full-name').show();
+            $('#full-name').show().find('input, input').attr('required', true).prop('disabled', false);
+            $('#registrationModal form .work-email').show();
+            $('#work-email').show().find('input, input').attr('required', true).prop('disabled', false);
+            $("#user-role").val("brand");
+        });
+
+        $("#registrationModal #register-btn").on('click', function (e) {
+            console.log("btn was clicked");
+            e.preventDefault();
+            let company_name = $('input[name = "company"]').val() ? $('input[name = "company"]').val() : "";
             let your_name = $('input[name = "your-name"]').val() ? $('input[name = "your-name"]').val() : "";
             let your_email = $('input[name = "your-email"]').val() ? $('input[name = "your-email"]').val() : "";
             let full_name = $('input[name = "full-name"]').val() ? $('input[name = "full-name"]').val() : "";
-            let work_email = $('input[name = "WorkEmail"]').val() ? $('input[name = "WorkEmail"]').val() : "";
-            let linkedin_url = $('input[name = "linkedin-url"]').val() ? $('input[name = "linkedin-url"]').val() : "";
-            let website_url = $('input[name = "webiste-url"]').val() ? $('input[name = "webiste-url"]').val() : "";
+            let your_pass = $('input[name = "your-password"]').val() ? $('input[name = "your-password"]').val() : "";
+            let confirm_pass = $('input[name = "confirm-password"]').val() ? $('input[name = "confirm-password"]').val() : "";
+            let work_email = $('input[name = "work-email"]').val() ? $('input[name = "work-email"]').val() : "";
+            let linkedin_url = $('input[name = "linkedin"]').val() ? $('input[name = "linkedin"]').val() : "";
+            let website_url = $('input[name = "website-url"]').val() ? $('input[name = "website-url"]').val() : "";
             let about_you = $('textarea[name = "about-you"]').val() ? $('textarea[name = "about-you"]').val() : "";
             let user_role = $('input[name = "user-role"]').val();
 
-            console.log(company_name+" "+your_name+" "+your_email+" "+full_name+" "+work_email+" "+linkedin_url+" "+website_url+" "+about_you+" "+user_role);
 
+            console.log(company_name +" "+your_name+" "+your_email+" "+full_name+"  "+your_pass+"  "+confirm_pass+" "+work_email+" "+linkedin_url+" "+website_url+" "+about_you+" "+user_role);
+            $(".error").remove();
+            if (company_name.length < 1) {
+                console.log(company_name.length);
+                $('#company').after('<span class="error">Company/Studio/Brand  name is required to register</span>');
+            }
+            if ((your_name.length < 1) && ( user_role === 'journalist' || user_role === 'designer')) {
+                $('#your-name').after('<span class="error">Please fill in a name to register</span>');
+            }
+            if ((your_email.length < 1) && ( user_role === 'journalist' || user_role === 'designer')) {
+                $('#your-email').after('<span class="error">Please fill in an email to register</span>');
+            }
+            if ((full_name.length < 1) && ( user_role === 'architect' || user_role === 'brand')) {
+                $('#full-name').after('<span class="error">Please fill in the full names to register</span>');
+            }
+            if (your_pass.length < 1) {
+                $('#your-password').after('<span class="error">Please fill in a password to register</span>');
+            }
+            if (confirm_pass.length < 1) {
+                $('#confirm-password').after('<span class="error">Please retype password to confirm</span>');
+            }
+            if (confirm_pass !== your_pass) {
+                $('#confirm-password').after('<span class="error">Password does not match</span>');
+            }
+            if ((work_email.length < 1) && ( user_role === 'architect' || user_role === 'brand')) {
+                $('#work-email').after('<span class="error">Please work email required to register</span>');
+            }
+            if ((linkedin_url.length < 1  ) && ( user_role === 'journalist' || user_role === 'designer')) {
+                $('#linkedin').after('<span class="error">Please fill in your linkedIn url to register</span>');
+            }
+            if (website_url.length < 1) {
+                $('#website-url').after('<span class="error">Please fill in your website url to register</span>');
+            }
+            if (about_you.length < 1) {
+                $('#about-you').after('<span class="error">Please fill a short description about yourself</span>');
+            }
             $.ajax({
                 type: "POST",
                 dataType: "json",
@@ -113,6 +158,7 @@ jQuery(function ($) {
                     your_name: your_name,
                     your_email: your_email,
                     full_name: full_name,
+                    your_pass: your_pass,
                     work_email: work_email,
                     linkedin_url: linkedin_url,
                     website_url: website_url,
@@ -122,9 +168,26 @@ jQuery(function ($) {
                 },
                 success: function (data) {
                     console.log(data);
+                    if(data.type === "error") {
+                        $("#reg-error-message").removeClass('disabled').addClass('error').html(data.message);
+                        $('.modal-backdrop').hide();
+                        $("#registrationModal").hide();
+                    }
+                    else {
+                        // Reset the form
+                        $("#reg-error-message").removeClass('disabled').addClass('success').html(data.message);
+                        $("#registrationModal form ").trigger("reset");
+                        setTimeout(function() {$('#registrationModal').modal('hide');}, 4000);
+                    }
                 }
-
             });
+        });
+        $('.close').on('click', function (e) {
+            e.preventDefault();
+            $('#registrationModal form').trigger("reset");
+            $('.modal-backdrop').hide();
         });
     });
 });
+
+

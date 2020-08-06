@@ -1,51 +1,60 @@
 /* login modal*/
+jQuery(function ($) {
+    $(document).ready(function () {
+        $("#login-btn").on('click', function (e) {
+            e.preventDefault();
+            // loader();
+            // Show the overlay
+            // $.LoadingOverlay("show", {
+            //     fontawesomeColor: "#FAA505",
+            //     progressColor: "#FAA505",
+            //     imageColor: "#FAA505",
+            //     //background  : "rgba(0, 0, 0, 0.5)"
+            // });
 
-jQuery("#wpcf7-f8686-o1 form").on('submit',function(e){
-    e.preventDefault();
-    // loader();
-    // Show the overlay
-    $.LoadingOverlay("show", {
-        fontawesomeColor: "#FAA505",
-        progressColor: "#FAA505",
-        imageColor: "#FAA505",
-        //background  : "rgba(0, 0, 0, 0.5)"
-    });
-
-    let user_name = jQuery('input[name = "user-name"]').val();
-    let password = jQuery('input[name = "password"]').val();
-    // let redirect_to =jQuery('input[name = "redirect_to"]').val();
-    jQuery.ajax({
-        type: "POST",
-        dataType: "json",
-        url: drizyLogin.ajaxurl,
-        data: {
-            log:user_name,
-            pwd:password,
-            action:"user_login_verification",
-            'security': $('#loginform #security').val()
-        },
-        success: function (data) {
-            console.log(data)  ;
-            $.LoadingOverlay('hide');
-
-
-            if(data.type == "error") {
-                jQuery("#login-error").addClass('error').html(data.message);
-
+            let user_name = $('input[name = "user-name"]').val();
+            let password = $('input[name = "password"]').val();
+            console.log(user_name+"  "+password);
+            $(".error").remove();
+            if (user_name.length < 1) {
+                console.log(user_name.length);
+                $('#user-name').after('<span class="error">Please fill a username or email to login</span>');
             }
-            else{
-                jQuery("#login-error").addClass('success').html(data.message);
-                // e.currentTarget.submit();
-                if(data.redirect_to){
-                    document.location.href = data.redirect_to;
-                }else{
-                    document.location.href = redirect_to;
+            if (password.length < 1){
+                $('#password').after('<span class="error">Please fill ain a password to login</span>');
+            }
+            // let redirect_to =jQuery('input[name = "redirect_to"]').val();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: drizyLogin.ajaxurl,
+                data: {
+                    user_name: user_name,
+                    password: password,
+                    action: "drizy_login_verification",
+                    // 'security': $('#loginform #security').val()
+                },
+                success: function (data) {
+                    console.log(data);
+                    // $.LoadingOverlay('hide');
+                    if (data.type == "error") {
+                        $("#login-error").addClass('error').html(data.message);
+
+                    } else {
+                        $("#login-error").addClass('success').html(data.message);
+                        // e.currentTarget.submit();
+                        if (data.redirect_to) {
+                            document.location.href = data.redirect_to;
+                        } else {
+                            // document.location.href = redirect_to;
+                        }
+
+                    }
+
                 }
 
-            }
+            });
 
-        }
-
+        });
     });
-
 });
