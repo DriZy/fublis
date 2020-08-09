@@ -49,7 +49,7 @@ function drizy_user_registration(){
         $args = array (
             'user_login'    =>  $name,
             'user_email'    =>  $email,
-            'user_pass'     => $your_pass,
+            'user_pass'     =>  $your_pass,
             'display_name'  =>  $name,
             'description'   =>  $about_you,
             'role'          =>  $user_role,

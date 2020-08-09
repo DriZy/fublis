@@ -111,76 +111,91 @@ jQuery(function ($) {
             let about_you = $('textarea[name = "about-you"]').val() ? $('textarea[name = "about-you"]').val() : "";
             let user_role = $('input[name = "user-role"]').val();
 
-            console.log(company_name +" "+your_name+" "+your_email+" "+full_name+"  "+your_pass+"  "+confirm_pass+" "+work_email+" "+linkedin_url+" "+website_url+" "+about_you+" "+user_role);
 
             $(".error").remove();
+            let error = '';
             if (company_name.length < 1) {
                 console.log(company_name.length);
-                $('#company').before('<span class="error">Company/Studio/Brand  name is required to register</span>');
+                error = 'Company/Studio/Brand  name is required to register';
+                    $('#company').before(`<span class="error">${error}</span>`);
             }
             if ((your_name.length < 1) && ( user_role === 'journalist' || user_role === 'designer')) {
-                $('#your-name').before('<span class="error">Please fill in a name to register</span>');
+                error = 'Please fill in a name to register';
+                    $('#your-name').before(`<span class="error">${error}</span>`);
             }
             if ((your_email.length < 1) && ( user_role === 'journalist' || user_role === 'designer')) {
-                $('#your-email').before('<span class="error">Please fill in an email to register</span>');
+                error = 'Please fill in an email to register';
+                $('#your-email').before(`<span class="error">${error}</span>`);
             }
             if ((full_name.length < 1) && ( user_role === 'architect' || user_role === 'brand')) {
-                $('#full-name').before('<span class="error">Please fill in the full names to register</span>');
+                error = 'Please fill in the full names to register';
+                $('#full-name').before(`<span class="error">${error}</span>`);
             }
             if (your_pass.length < 1) {
-                $('#your-password').before('<span class="error">Please fill in a password to register</span>');
+                error = 'Please fill in a password to register';
+                $('#your-password').before(`<span class="error">${error}</span>`);
             }
             if (confirm_pass.length < 1) {
-                $('#confirm-password').before('<span class="error">Please retype password to confirm</span>');
+                error = 'Please retype password to confirm';
+                $('#confirm-password').before(`<span class="error">${error}</span>`);
             }
             if (confirm_pass !== your_pass) {
-                $('#confirm-password').before('<span class="error">Password does not match</span>');
+                error = 'Password does not match';
+                $('#confirm-password').before(`<span class="error">${error}</span>`);
             }
             if ((work_email.length < 1) && ( user_role === 'architect' || user_role === 'brand')) {
-                $('#work-email').before('<span class="error">Please work email required to register</span>');
+                error = 'Please work email required to register';
+                $('#work-email').before(`<span class="error">${error}</span>`);
             }
             if ((linkedin_url.length < 1  ) && ( user_role === 'journalist' || user_role === 'designer')) {
-                $('#linkedin').before('<span class="error">Please fill in your linkedIn url to register</span>');
+                error = 'Please fill in your linkedIn url to register';
+                $('#linkedin').before(`<span class="error">${error}</span>`);
             }
             if (website_url.length < 1) {
-                $('#website-url').before('<span class="error">Please fill in your website url to register</span>');
+                error = 'Please fill in your website url to register';
+                $('#website-url').before(`<span class="error">${error}</span>`);
             }
             if (about_you.length < 1) {
-                $('#about-you').before('<span class="error">Please fill a short description about yourself</span>');
+                error = 'Please fill a short description about yourself';
+                $('#about-you').before(`<span class="error">${error}</span>`);
             }
-            $("#drizy-reg-result").show().html('<span><i class="icon icon-spin5 animate-spin"></i> Sending info... Please wait.</span>'),
-                $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: drizyReg.ajaxurl,
-                data: {
-                    company_name: company_name,
-                    your_name: your_name,
-                    your_email: your_email,
-                    full_name: full_name,
-                    your_pass: your_pass,
-                    work_email: work_email,
-                    linkedin_url: linkedin_url,
-                    website_url: website_url,
-                    about_you: about_you,
-                    user_role: user_role,
-                    action: 'drizy_user_registration'
-                },
-                success: function (data) {
-                    console.log(data);
-                    if(data.type === "error") {
-                        $("#drizy-reg-result").addClass('error').html(data.message);
-                        // $('.modal-backdrop').hide();
-                        // $("#registrationModal").hide();
-                    }
-                    else {
-                        // Reset the form
-                        $("#drizy-reg-result").addClass('success').html(data.message);
-                        $("#registrationModal form ").trigger("reset");
-                        setTimeout(function() {$('#registrationModal').modal('hide');}, 4000);
-                    }
-                }
-            });
+            if( error = '' ) {
+                console.log(error);
+                $("#drizy-reg-result").show().html('<span><i class="icon icon-spin5 animate-spin"></i> Sending info... Please wait.</span>'),
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: drizyReg.ajaxurl,
+                        data: {
+                            company_name: company_name,
+                            your_name: your_name,
+                            your_email: your_email,
+                            full_name: full_name,
+                            your_pass: your_pass,
+                            work_email: work_email,
+                            linkedin_url: linkedin_url,
+                            website_url: website_url,
+                            about_you: about_you,
+                            user_role: user_role,
+                            action: 'drizy_user_registration'
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if (data.type === "error") {
+                                $("#drizy-reg-result").addClass('error').html(data.message);
+                                // $('.modal-backdrop').hide();
+                                // $("#registrationModal").hide();
+                            } else {
+                                // Reset the form
+                                $("#drizy-reg-result").addClass('success').html(data.message);
+                                $("#registrationModal form ").trigger("reset");
+                                setTimeout(function () {
+                                    $('#registrationModal').modal('hide');
+                                }, 4000);
+                            }
+                        }
+                    });
+            }
         });
         $('.close').on('click', function (e) {
             e.preventDefault();
