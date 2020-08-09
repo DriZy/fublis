@@ -49,7 +49,7 @@ function drizy_user_registration(){
         $args = array (
             'user_login'    =>  $name,
             'user_email'    =>  $email,
-            'user_pass'     => $your_pass,
+            'user_pass'     =>  $your_pass,
             'display_name'  =>  $name,
             'description'   =>  $about_you,
             'role'          =>  $user_role,
@@ -58,7 +58,7 @@ function drizy_user_registration(){
         $id = wp_insert_user( $args ) ;
         if(is_wp_error( $id )){
             if ($id->get_error_code() == 'existing_user_login'){
-                throw new Exception(__("This email address already registered. You may want to login instead.", 'drizy'));
+                throw new Exception(__("This email address is already registered. You may want to login instead.", 'drizy'));
             } else {
                 $response['message'] = $id->get_error_message();
             }
@@ -67,7 +67,7 @@ function drizy_user_registration(){
         {
             $site_name = get_bloginfo('name');
             $response['type'] = "success";
-            $response['message'] = __("Registration on $site_name was successful. Please verify your email to confirm your account", 'drizy');
+            $response['message'] = __("Your account on $site_name was successfully created. Please verify your email to confirm your account", 'drizy');
             if($company_name != ''){
                 update_user_meta($id, 'company_name', $company_name);
             }
@@ -83,23 +83,26 @@ function drizy_user_registration(){
         $response['type'] = "error";
         $response['message'] = nl2br($e->getMessage());
     }
-
     echo json_encode($response);
     wp_die();
 }
 add_action("wp_ajax_drizy_user_registration", "drizy_user_registration");
 add_action("wp_ajax_nopriv_drizy_user_registration", "drizy_user_registration");
 
-
+// add user company name column to all users dashboard
 function drizy_add_user_columns( $columns ) {
     $columns['company_name'] = __( 'Company Name', 'drizy' );
     return $columns;
-} // end theme_add_user_zip_code_column
+}
 add_filter( 'manage_users_columns', 'drizy_add_user_columns' );
 
+//drizy_show_user_data
 function drizy_show_user_data( $value, $column_name, $id ) {
     if( 'company_name' == $column_name ) {
         return get_user_meta( $id, 'company_name', true );
-    } // end if
-} // end drizy_show_user_data
+    }
+}
 add_action( 'manage_users_custom_column', 'drizy_show_user_data', 10, 3 );
+;
+
+
