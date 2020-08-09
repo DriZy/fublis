@@ -38,7 +38,7 @@ require get_stylesheet_directory().'/inc/vc-grid-shortcodes.php';
 require get_stylesheet_directory().'/inc/registration.php';
 require get_stylesheet_directory().'/inc/user_profile_fields.php';
 require get_stylesheet_directory().'/inc/login.php';
-require get_stylesheet_directory().'/inc/helpers.php';
+//require get_stylesheet_directory().'/inc/helpers.php';
 
 
 //drizy custom image sizes
