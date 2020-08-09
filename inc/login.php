@@ -12,11 +12,9 @@ function drizy_login_verification(){
     $creds = array();
     $creds['user_login'] = esc_attr($_POST['user_name']);
     $creds['user_password'] = esc_attr($_POST['password']);
-//    $creds['remember'] = true;
+    $creds['remember'] = true;
     // echo $creds['user_password'];
     $user_signon = wp_signon( $creds, false );
-    var_dump($user_signon);
-    die();
     if(is_wp_error( $user_signon )){
         $response['type'] = "error";
         $response['message'] = __('Wrong username or password.', 'drizy');
@@ -36,11 +34,10 @@ function drizy_login_verification(){
         if(in_array( 'administrator', (array) $user->roles ) ){
             $response['redirect_to'] = home_url('/wp-admin');
         }
-        $response['redirect_to'] = home_url('/members/');
+        $response['redirect_to'] = home_url('/members/'.$user_signon->user_nicename.'/');
     }
     echo json_encode($response);
     die();
-
 }
 
 add_action("wp_ajax_drizy_login_verification", "drizy_login_verification");
