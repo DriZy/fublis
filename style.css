@@ -14,20 +14,22 @@ License URI: license.txt
 * Please add your custom styles below
 */
 
-
-.vc_general.vc_cta3.home-intro-content{
+.vc_general.vc_cta3.home-intro-content {
     border-radius: 0 !important;
     border: none;
     margin-right: -4.5rem;
     background: rgb(242, 249, 249);
 }
-.vc_general.vc_cta3.home-intro-content p{
+
+.vc_general.vc_cta3.home-intro-content p {
     font-size: 25px;
 }
-div.how-it-works-content{
+
+div.how-it-works-content {
     display: flex;
 }
-div.how-it-works-content h3.figure{
+
+div.how-it-works-content h3.figure {
     background: #444444;
     margin-bottom: 12.5rem;
     padding: 0 .6rem;
@@ -38,97 +40,147 @@ div.how-it-works-content h3.figure{
     font-weight: 500;
     border-radius: 6px;
 }
-div.how-it-works-content .text-content{
+
+div.how-it-works-content .text-content {
     padding-left: 1rem;
     padding-right: 3.5rem;
 }
 
-div.how-it-works-content .text-content h3{
+div.how-it-works-content .text-content h3 {
     font-size: 24px;
     font-family: sans-serif;
     font-style: normal;
     font-weight: 500 !important;
 }
 
-
-div.how-it-works-content .text-content p{
+div.how-it-works-content .text-content p {
     color: #555555;
     font-size: 14px;
     font-family: sans-serif;
 
 }
-.standard-list li{
+
+.standard-list li {
     list-style: none !important;
 }
 
-.standard-list li:before{
+.standard-list li:before {
     display: contents;
 }
 
-#home-list-items-first{
+#home-list-items-first {
     color: #333000;
     font-weight: 400;
 }
 
-.home-list-items{
+.home-list-items {
     padding-left: 2rem;
 }
-.hr-title abbr{
+
+.hr-title abbr {
     padding: 0 !important;
 }
 
-.hr-title{
+.hr-title {
     border-top-color: #3db2c3 !important;
     margin: -9px auto 0px;
 }
 
-.home-page .kleo-page .main-title{
+.home-page .kleo-page .main-title {
     display: none;
 }
 
-.recent-project-grid{
+.recent-project-grid {
     margin: auto 0;
 }
-.recent-project-title h2{
+
+.recent-project-title h2 {
     margin-bottom: 0;
 }
-.recent-project-title h2 a{
+
+.recent-project-title h2 a {
     font-size: 27px;
     font-weight: 500;
 }
 
 .recent-project-author-location,
-.recent-project-year-type{
+.recent-project-year-type {
     margin: auto 0;
 }
 
 .recent-project-author-location .col-sm-6,
-.recent-project-year-type .col-sm-6{
+.recent-project-year-type .col-sm-6 {
     padding-left: 3px;
     padding-right: 3px;
 }
+
 .recent-project-author-location .col-sm-6 p,
-.recent-project-year-type .col-sm-6 p{
+.recent-project-year-type .col-sm-6 p {
     margin-bottom: 0;
 }
 
 .recent-project-author-location .col-sm-6 b,
 .recent-project-author-location .col-sm-6 p,
 .recent-project-year-type .col-sm-6 b,
-.recent-project-year-type .col-sm-6 p{
+.recent-project-year-type .col-sm-6 p {
     font-size: 11px;
 }
-.mfp-close{
+
+.mfp-close {
     right: 15px !important;
 }
-.card i{
-    font-size: 100px;
+
+.card {
+    margin-bottom: 30px;
 }
-.card{
-    margin: 5rem;
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    text-align: center;
+    padding: 15px;
 }
-.card .role-name h4{
-    font-size: 32px;
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.registration-options__heading {
+    margin-top: 30px;
+}
+
+.registration-options__body {
+    margin-top: 30px;
+}
+
+.registration-option-card {
+    padding: 0;
+}
+
+a.registration-option-link {
+    color: #444444;
+    display: block;
+    padding: 15px;
+}
+
+a.registration-option-link:hover {
+    cursor: pointer;
+}
+
+.registration-option-link i {
+    font-size: 90px;
+    color: #444444;
+}
+
+a.registration-option-link:hover i {
+    color: #444444;
+}
+
+.registration-option-link .role-name h4 {
+    /*font-size: 32px;*/
+    font-size: 28px;
     text-align: center;
 }
 
@@ -137,49 +189,45 @@ div#registrationModal {
     top: calc(40% - 300px) !important;
 }
 
-.card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    text-align: center;
-    padding: 15px;
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.kleo-form-modal {
+    max-width: 600px;
 }
 
 /* Add some padding inside the card container */
 .container {
     padding: 2px 16px;
 }
-.disabled{
+
+.disabled {
     display: none;
 }
 
-.error{
+.error {
     color: #ee2534;
     font-size: 15px;
     text-align: left !important;
     margin-left: 1px;
 }
-.success{
+
+.success {
     color: green;
     font-size: 15px;
 }
+
 /*Media queries*/
 
-@media (max-width: 767px){
-    .vc_general.vc_cta3.home-intro-content{
+@media (max-width: 767px) {
+    .vc_general.vc_cta3.home-intro-content {
         border-radius: 0 !important;
         border: none;
         margin-left: 0 !important;
         background: rgb(242, 249, 249);
     }
-    .vc_general.vc_cta3.home-intro-content p{
+
+    .vc_general.vc_cta3.home-intro-content p {
         font-size: 20px;
     }
+
     /*.recent-project-author-location,*/
     /*.recent-project-year-type{*/
     /*    margin: auto 0;*/
