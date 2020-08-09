@@ -47,9 +47,5 @@ jQuery(function ($) {
 
             });
         });
-       $('.login-menu').on('click', function (e) {
-           e.preventDefault();
-           $('#loginModal').show();
-       });
     });
 });

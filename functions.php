@@ -24,6 +24,9 @@ Function drizy_enqueue_scripts() {
     wp_localize_script('login-js','drizyLogin', array('ajaxurl' => admin_url('admin-ajax.php')) );
     wp_enqueue_script('login-js');
 
+    wp_register_script('fublis-js', get_stylesheet_directory_uri() . '/js/fublis.js', array('jquery'), '1.0',true);
+    wp_enqueue_script('fublis-js');
+
 }
 add_action( 'wp_enqueue_scripts', 'drizy_enqueue_scripts', 11);
 
@@ -35,6 +38,8 @@ require get_stylesheet_directory().'/inc/vc-grid-shortcodes.php';
 require get_stylesheet_directory().'/inc/registration.php';
 require get_stylesheet_directory().'/inc/user_profile_fields.php';
 require get_stylesheet_directory().'/inc/login.php';
+require get_stylesheet_directory().'/inc/helpers.php';
+
 
 //drizy custom image sizes
 function drizy_custom_image_sizes(){

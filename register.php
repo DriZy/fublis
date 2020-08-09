@@ -78,17 +78,11 @@ if (is_page('register') && !is_user_logged_in()) {
         </div>
     </div>
 
-
-
-
-
-
-
     <?php get_template_part('page-parts/general-after-wrap'); ?>
 
     <?php get_footer();
 } else {
-    wp_redirect(home_url($current_slug));
+    wp_redirect(home_url());
     $reg_page_msg = "You are already logged in";
 }
 
