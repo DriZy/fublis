@@ -13,76 +13,93 @@ if (is_page('register') && !is_user_logged_in()) {
 
     get_header(); ?>
 
-    <?php get_template_part('page-parts/general-title-section'); ?>
+    <?php // get_template_part('page-parts/general-title-section'); ?>
 
-    <?php get_template_part('page-parts/general-before-wrap'); ?>
+    <?php // get_template_part('page-parts/general-before-wrap'); ?>
 
+    <div class="yz-page">
+        <div class="yz-content">
+            <div class="yz-page-main-content">
+                <div class="container">
 
-    <div class="registration-options">
-        <div class="registration-options__heading">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h5>Choose a role below to register as</h5>
-                </div>
-            </div>
-        </div>
-        <div class="registration-options__body">
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="card registration-option-card">
-                        <a href="#" id="architect-reg" class="registration-option-link"
-                           data-toggle="modal" data-target="#registrationModal">
-                            <i class="fas fa-home"></i>
-                            <div class="role-name">
-                                <h4><b>Architect</b></h4>
-                            </div>
-                        </a>
+                    <div class="text-right">
+                        Already have an account? &nbsp; <a class="btn btn-primary text-uppercase">Sign In</a>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="card registration-option-card">
-                        <a href="#" id="journalist-reg" class="registration-option-link"
-                           data-toggle="modal" data-target="#registrationModal">
-                            <i class="fas fa-newspaper"></i>
-                            <div class="role-name">
-                                <h4><b>Journalists</b></h4>
-                            </div>
-                        </a>
+
+                    <div class="text-center">
+                        <h2>Join the community</h2>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="card registration-option-card">
-                        <a id="designer-reg" data-toggle="modal" class="registration-option-link"
-                           data-target="#registrationModal">
-                            <i class="fab fa-sketch"></i>
-                            <div class="role-name">
-                                <h4><b>Designer</b></h4>
+
+                    <div class="registration-options">
+                        <div class="registration-options__heading">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>Choose a role below to register as</h5>
+                                </div>
                             </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="card registration-option-card">
-                        <a id="brand-reg" data-toggle="modal" class="registration-option-link"
-                           data-target="#registrationModal">
-                            <i class="fab fa-bandcamp"></i>
-                            <div class="role-name">
-                                <h4><b>Brand</b></h4>
+                        </div>
+                        <div class="registration-options__body">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="card registration-option-card">
+                                        <a href="#" id="architect-reg" class="registration-option-link"
+                                           data-toggle="modal" data-target="#registrationModal">
+                                            <i class="fas fa-home"></i>
+                                            <div class="role-name">
+                                                <h4><b>Architect</b></h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="card registration-option-card">
+                                        <a href="#" id="journalist-reg" class="registration-option-link"
+                                           data-toggle="modal" data-target="#registrationModal">
+                                            <i class="fas fa-newspaper"></i>
+                                            <div class="role-name">
+                                                <h4><b>Journalists</b></h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="card registration-option-card">
+                                        <a id="designer-reg" data-toggle="modal" class="registration-option-link"
+                                           data-target="#registrationModal">
+                                            <i class="fab fa-sketch"></i>
+                                            <div class="role-name">
+                                                <h4><b>Designer</b></h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="card registration-option-card">
+                                        <a id="brand-reg" data-toggle="modal" class="registration-option-link"
+                                           data-target="#registrationModal">
+                                            <i class="fab fa-bandcamp"></i>
+                                            <div class="role-name">
+                                                <h4><b>Brand</b></h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <?php get_template_part('page-parts/general-after-wrap'); ?>
+
+    <?php // get_template_part('page-parts/general-after-wrap'); ?>
 
     <?php get_footer();
 } else {
-    wp_redirect(home_url());
+    wp_redirect(home_url($current_slug));
     $reg_page_msg = "You are already logged in";
 }
 
