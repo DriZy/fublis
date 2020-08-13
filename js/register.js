@@ -159,9 +159,8 @@ jQuery(function ($) {
                 error = 'Please fill a short description about yourself';
                 $('#about-you').before(`<span class="error">${error}</span>`);
             }
-            if( error = '' ) {
-                console.log(error);
-                $("#drizy-reg-result").show().html('<span><i class="icon icon-spin5 animate-spin"></i> Sending info... Please wait.</span>'),
+            if( error === '' ) {
+                $("#drizy-reg-result").show().html('<span><i class="icon icon-spin5 animate-spin"></i> Sending info... Please wait.</span>');
                     $.ajax({
                         type: "POST",
                         dataType: "json",

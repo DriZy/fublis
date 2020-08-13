@@ -7,46 +7,49 @@ jQuery(function ($) {
             let password = $('input[name = "password"]').val();
 
             $(".error").remove();
+            let error = '';
             if (user_name.length < 1) {
-                console.log(user_name.length);
-                $('#user-name').after('<span class="error">Please fill a username or email to login</span>');
+                error = 'Please fill a username or email to login';
+                $('#user-name').before(`<span class="error">${error}</span>`);
             }
             if (password.length < 1){
-                $('#password').after('<span class="error">Please fill ain a password to login</span>');
+                error = 'Please fill in a password to login';
+                $('#password').before(`<span class="error">${error}</span>`);
             }
             // let redirect_to =jQuery('input[name = "redirect_to"]').val();
-            $("#drizy-login-result").show().html('<span><i class="icon icon-spin5 animate-spin"></i> Sending info... Please wait.</span>'),
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: drizyLogin.ajaxurl,
-                data: {
-                    user_name: user_name,
-                    password: password,
-                    action: "drizy_login_verification",
-                    'security': $('#loginModal #fublis-security').val()
-                },
-                preloader: false,
-                success: function (data) {
-                    console.log(data);
-                    if(data.type === "error") {
-                        $("#drizy-login-result").addClass('error').html(data.message);
+            if ( error == '' ) {
+                $("#drizy-login-result").show().html('<span><i class="icon icon-spin5 animate-spin"></i> Sending info... Please wait.</span>');
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: drizyLogin.ajaxurl,
+                        data: {
+                            user_name: user_name,
+                            password: password,
+                            action: "drizy_login_verification",
+                            'security': $('#loginModal #fublis-security').val()
+                        },
+                        preloader: false,
+                        success: function (data) {
+                            console.log(data);
+                            if (data.type === "error") {
+                                $("#drizy-login-result").addClass('error').html(data.message);
 
-                    } else {
-                        $("#drizy-login-result").addClass('success').html(data.message);
-                        // e.currentTarget.submit();
-                        if (data.redirect_to) {
-                            document.location.href = data.redirect_to;
-                        } else {
-                            // document.location.href = redirect_to;
+                            } else {
+                                $("#drizy-login-result").addClass('success').html(data.message);
+                                // e.currentTarget.submit();
+                                if (data.redirect_to) {
+                                    document.location.href = data.redirect_to;
+                                } else {
+                                    // document.location.href = redirect_to;
+                                }
+
+                            }
+
                         }
 
-                    }
-
-                }
-
-            });
-
+                    });
+            }
         });
     });
 });
