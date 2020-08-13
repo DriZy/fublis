@@ -61,6 +61,7 @@ function drizy_user_registration(){
                 throw new Exception(__("This email address is already registered. You may want to login instead.", 'drizy'));
             } else {
                 $response['message'] = $id->get_error_message();
+                $response["type"] = "error";
             }
         }
         else

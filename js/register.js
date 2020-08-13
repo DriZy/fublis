@@ -111,7 +111,8 @@ jQuery(function ($) {
             let about_you = $('textarea[name = "about-you"]').val() ? $('textarea[name = "about-you"]').val() : "";
             let user_role = $('input[name = "user-role"]').val();
 
-
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            var urlReg = /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
             $(".error").remove();
             let error = '';
             if (company_name.length < 1) {
@@ -126,6 +127,12 @@ jQuery(function ($) {
             if ((your_email.length < 1) && ( user_role === 'journalist' || user_role === 'designer')) {
                 error = 'Please fill in an email to register';
                 $('#your-email').before(`<span class="error">${error}</span>`);
+            }
+            else if(!emailReg.test(your_email)){
+                error = 'Please enter a valid email address (eg: example@fublis.com)';
+                $('#your-email').before(`<span class="error">${error}</span>`);
+            }else {
+                error = '';
             }
             if ((full_name.length < 1) && ( user_role === 'architect' || user_role === 'brand')) {
                 error = 'Please fill in the full names to register';
@@ -147,20 +154,42 @@ jQuery(function ($) {
                 error = 'Please work email required to register';
                 $('#work-email').before(`<span class="error">${error}</span>`);
             }
+            else if(!emailReg.test(work_email)){
+                error = 'Please enter a valid email address (eg: example@fublis.com)';
+                $('#work-email').before(`<span class="error">${error}</span>`);
+            }else {
+                error = '';
+            }
             if ((linkedin_url.length < 1  ) && ( user_role === 'journalist' || user_role === 'designer')) {
                 error = 'Please fill in your linkedIn url to register';
                 $('#linkedin').before(`<span class="error">${error}</span>`);
+            }
+            else if (!urlReg.test(linkedin_url)){
+                error = 'Please enter a valid url (eg: http://example.com)';
+                $('#linkedin').before(`<span class="error">${error}</span>`);
+            }else {
+                error = '';
             }
             if (website_url.length < 1) {
                 error = 'Please fill in your website url to register';
                 $('#website-url').before(`<span class="error">${error}</span>`);
             }
-            if (about_you.length < 1) {
+            else if (!urlReg.test(website_url)){
+                error = 'Please enter a valid url (eg: http://example.com)';
+                $('#website-url').before(`<span class="error">${error}</span>`);
+            }else {
+                error = '';
+            }
+            if (about_you.length < 1){
                 error = 'Please fill a short description about yourself';
                 $('#about-you').before(`<span class="error">${error}</span>`);
             }
-            if( error === '' ) {
-                $("#drizy-reg-result").show().html('<span><i class="icon icon-spin5 animate-spin"></i> Sending info... Please wait.</span>');
+            if( error !== '' ) {
+
+                console.log(error);
+                return;
+            }
+            $("#drizy-reg-result").show().html('<span><i class="icon icon-spin5 animate-spin"></i> Sending info... Please wait.</span>');
                     $.ajax({
                         type: "POST",
                         dataType: "json",
@@ -194,7 +223,6 @@ jQuery(function ($) {
                             }
                         }
                     });
-            }
         });
         $('.close').on('click', function (e) {
             e.preventDefault();
