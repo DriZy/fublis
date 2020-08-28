@@ -455,3 +455,65 @@ body.buddypress .kleo-page
     /*    display: flex;*/
     /*}*/
 }
+
+
+
+/*buddypress activate page */
+
+form.activate-form{
+    display: inline-block;
+    width: 25%;
+    margin-top: 5rem;
+}
+form.activate-form input[type=text]{
+    width: 100% !important;
+}
+
+
+
+div.btn.dropdown-toggle.btn-default.bs-placeholder,
+#buddypress button:not(.multiselect){
+    font-size: 15px;
+    /*color: #444444 !important;*/
+    border: none !important;
+    padding: 0 0 0 8px !important;
+}
+div.btn.dropdown-toggle.btn-default.bs-placeholder:hover,
+#buddypress button:not(.multiselect):hover
+div.btn.dropdown-toggle.btn-default.bs-placeholder:active,
+#buddypress button:not(.multiselect):active,
+div.btn.dropdown-toggle.btn-default.bs-placeholder:focus,
+#buddypress button:not(.multiselect):focus{
+    border: none !important;
+}
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+    overflow: hidden;
+    background: white;
+    border-color: white;
+}
+.bootstrap-select .dropdown-toggle .caret{
+    top: 10%;
+    right: 5%;
+}
+.dropdown-menu li {
+    border: none;
+}
+.open>.dropdown-menu {
+    display: block;
+    text-align: left;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+div.filter-option .filter-option-inner-inner{
+    border-color: white;
+}
+
+.bs-searchbox input[type=search] {
+    border: none !important;
+}
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus{
+    background-color: #f3033030;
+    color: #333;
+}

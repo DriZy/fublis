@@ -72,13 +72,25 @@
 
                 <p class="text-light-grey">Choose your occupation and location</p>
 
-                <form action="" method="post" class="standard-form" id="activation-form">
+                <form action="" method="post" class="standard-form activate-form" id="activation-form">
 
-                    <label for="key"><?php _e( 'Activation Key:', 'buddypress' ); ?></label>
-                    <input type="text" name="key" id="key" value="<?php echo esc_attr( bp_get_current_activation_key() ); ?>" />
+<!--                    <label for="key">--><?php //_e( 'Activation Key:', 'buddypress' ); ?><!--</label>-->
+                    <input type="hidden" name="key" id="key" value="<?php echo esc_attr( bp_get_current_activation_key() ); ?>" />
+                    <div class="form-group user-data">
+                        <select class="form-control selectpicker" id="occupation" data-show-subtext="true" data-live-search="true" name="occupation" required>
+                            <option value="">Select Occupation</option>
+                            <option value="architect">Architect</option>
+                            <option value="designer">Designer</option>
+                            <option value="Journalist">Journalist</option>
+                        </select>
+                    </div>
+                    <div class="form-group has-search ui-widget">
+<!--                        <span class="fa fa-search form-control-feedback"></span>-->
+                        <input type="text" class="form-control location" id="autocomplete" onFocus="initAutoComplete()" name="location" placeholder="Search Location" required/>
+                    </div>
 
                     <p class="submit">
-                        <input type="submit" name="submit" value="<?php esc_attr_e( 'Activate', 'buddypress' ); ?>" />
+                        <input type="submit" id="activate-btn" name="submit" value="<?php esc_attr_e( 'Activate', 'buddypress' ); ?>" />
                     </p>
 
                 </form>
@@ -107,3 +119,4 @@
 	do_action( 'bp_after_activation_page' ); ?>
 
 </div><!-- #buddypress -->
+

@@ -9,9 +9,9 @@
 ?>
 
 <?php
-echo '<pre>';
-var_dump($_POST);
-echo '</pre>';
+// echo '<pre>';
+// var_dump($_POST);
+// echo '</pre>';
 
 $first_name = (!empty($_POST['signup_firstname'])) ? trim($_POST['signup_firstname']) : '';
 $last_name = (!empty($_POST['signup_lastname'])) ? trim($_POST['signup_lastname']) : '';
@@ -125,9 +125,9 @@ $is_tou_accepted = false;
                              var_dump($bp->signup->errors);
                              echo '</pre>';*/
 
-                             echo '<pre>';
-                             var_dump($_POST);
-                             echo '</pre>';
+                            //  echo '<pre>';
+                            //  var_dump($_POST);
+                            //  echo '</pre>';
                             ?>
 
 
@@ -656,6 +656,8 @@ $is_tou_accepted = false;
 
                             <p class="text-light-grey registration-confirm__text">
                                 <?php _e('Before proceeding, we need to confirm your account. Check your email and click the verification link to continue.', 'buddypress'); ?>
+                                <?php _e('<a>Did not receive it? Resent email</>', 'buddypress'); ?>
+
                             </p>
 
                         </div>

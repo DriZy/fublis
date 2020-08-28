@@ -10,20 +10,23 @@
  * Kleo Child Theme Functions
  * Add custom code below
  */
-global $reg_page_msg;
 
 Function drizy_enqueue_scripts()
 {
     wp_register_style('childstyle', get_stylesheet_directory_uri() . '/style.css');
     wp_enqueue_style('childstyle');
+    wp_register_style('bootstrap-select-styles', get_stylesheet_directory_uri() . '/css/bootstrap-select.min.css');
+    wp_enqueue_style('bootstrap-select-styles');
+  
 
-    wp_register_script('register-js', get_stylesheet_directory_uri() . '/js/register.js', array('jquery'), '1.0', true);
-    wp_localize_script('register-js', 'drizyReg', array('ajaxurl' => admin_url('admin-ajax.php')));
-    wp_enqueue_script('register-js');
+    wp_register_script('update-user', get_stylesheet_directory_uri() . '/js/fublis.js', array('jquery'), '1.0', true);
+    wp_localize_script('update-user', 'userUpdate', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('update-user');
 
-    wp_register_script('login-js', get_stylesheet_directory_uri() . '/js/login.js', array('jquery'), '1.0', true);
-    wp_localize_script('login-js', 'drizyLogin', array('ajaxurl' => admin_url('admin-ajax.php')));
-    wp_enqueue_script('login-js');
+
+    wp_register_script('bootstrap-select-js', get_stylesheet_directory_uri() . '/js/bootstrap-select.min.js', array('jquery'), '1.0', true);
+    //    wp_localize_script('select2-js', 'drizyLogin', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('bootstrap-select-js');
 
 }
 
@@ -34,8 +37,8 @@ require get_stylesheet_directory() . '/inc/project_cpt.php';
 require get_stylesheet_directory() . '/inc/meta_boxes.php';
 require get_stylesheet_directory() . '/inc/vc-custom-actions.php';
 require get_stylesheet_directory() . '/inc/vc-grid-shortcodes.php';
-require get_stylesheet_directory() . '/inc/registration.php';
-require get_stylesheet_directory() . '/inc/user_profile_fields.php';
+// require get_stylesheet_directory() . '/inc/registration.php';
+// require get_stylesheet_directory() . '/inc/user_profile_fields.php';
 require get_stylesheet_directory() . '/inc/login.php';
 
 //drizy custom image sizes
