@@ -65,7 +65,7 @@
             <div class="text-center">
 
                 <div>
-                    <img id="logo_img" title="Fublis" src="http://localhost/fublis/wp-content/uploads/2017/01/Fublis-Logo-1.png" alt="Fublis" style="max-height: 36px;">
+                    <img id="logo_img" title="Fublis" src="<?php echo get_stylesheet_directory_uri(); ?>/img/Fublis-Logo-1.png" alt="Fublis" style="max-height: 36px;">
                 </div>
 
                 <h2 class="registration-confirm__heading">Information</h2>
@@ -90,7 +90,7 @@
                     </div>
 
                     <p class="submit">
-                        <input type="submit" id="activate-btn" name="submit" value="<?php esc_attr_e( 'Activate', 'buddypress' ); ?>" />
+                        <input type="submit" id="activate-btn" name="submit" data-id="" value="<?php esc_attr_e( 'Activate', 'buddypress' ); ?>" />
                     </p>
 
                 </form>

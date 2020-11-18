@@ -213,7 +213,7 @@ div#registrationModal {
 
 .error {
     color: #ee2534;
-    font-size: 15px;
+    font-size: 16px;
     text-align: left !important;
     margin-left: 1px;
 }
@@ -221,6 +221,13 @@ div#registrationModal {
 .success {
     color: green;
     font-size: 15px;
+}
+#drizy-login-result{
+    margin-bottom: 1rem;
+}
+#drizy-login-result.error,
+#drizy-login-result.success{
+    text-align: center !important;
 }
 
 .header-color.social-header {
@@ -478,22 +485,17 @@ div.btn.dropdown-toggle.btn-default.bs-placeholder,
     border: none !important;
     padding: 0 0 0 8px !important;
 }
-div.btn.dropdown-toggle.btn-default.bs-placeholder:hover,
-#buddypress button:not(.multiselect):hover
-div.btn.dropdown-toggle.btn-default.bs-placeholder:active,
-#buddypress button:not(.multiselect):active,
-div.btn.dropdown-toggle.btn-default.bs-placeholder:focus,
-#buddypress button:not(.multiselect):focus{
-    border: none !important;
-}
+
 .bootstrap-select .dropdown-toggle .filter-option-inner-inner {
     overflow: hidden;
     background: white;
     border-color: white;
+    padding-left: 1rem;
 }
 .bootstrap-select .dropdown-toggle .caret{
     top: 10%;
-    right: 5%;
+    right: 7%;
+
 }
 .dropdown-menu li {
     border: none;
@@ -517,3 +519,271 @@ div.filter-option .filter-option-inner-inner{
     background-color: #f3033030;
     color: #333;
 }
+
+
+
+/* css for email template */
+table tbody td span.welcome{
+    display: none;
+}
+table tbody td div.bp-email-body{
+    background: #fff;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+table tbody td p.bp-email-social-links{
+    display: flex;
+}
+.complete-page-header{
+    background-color: #ccc
+}
+.complete-profile-welcome h3{
+    text-align: center;
+    padding: 3rem;
+    font-size: 25px;
+}
+.user-personal-info h3,
+.user-occupation-location p,
+.user-description-btn{
+   text-align: center;
+}
+section.user-info{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5rem;
+}
+section.user-info .container{
+    padding-top: 3%;
+}
+.user-info .user-edit-btn a{
+    float: right;
+    margin-right: 3.5rem;
+}
+.user-description-btn a,
+.user-info .user-edit-btn a{
+    background-color: #f7f7f7;
+    border-color: #f7f7f7;
+
+}
+
+
+
+.image-upload-one{
+    margin-bottom: -4.5%;
+}
+.image-upload-one .center {
+    display:inline;
+    margin: 2px;
+}
+
+.image-upload-one .form-input {
+    width: 195px;
+    padding:6px;
+    background:#fff;
+    z-index: 0;
+    border-radius: 7px;
+    /*border:2px dashed dodgerblue;*/
+}
+.image-upload-one .form-input input {
+    display:none;
+}
+
+.image-upload-one .form-input img#profile-pic-update-preview.profile-image {
+    padding: 0 !important;
+    pointer-events: none;
+}
+
+.image-upload-one .form-input img#profile-pic-update-preview.edit-image {
+    pointer-events: auto;
+}
+
+.image-upload-one .form-input img#profile-pic-update-preview {
+    width: 50rem;
+    height: 16rem;
+    padding: 5rem;
+    cursor:pointer;
+    background:#F7DAEB;
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.media-kits-upload .form-input img#media-kits-file-preview{
+    /*width: 50rem;*/
+    cursor:pointer;
+    pointer-events: none;
+}
+.media-kits-upload .form-input img#media-kits-file-preview.edit-image{
+    pointer-events: auto;
+}
+
+.media-kits-upload .form-input{
+    border: 2px dashed !important;
+    height: 100%;
+    padding: 2rem 0;
+    margin: 2rem;
+    border-radius: 10px;
+
+}
+
+.media-kits-upload .form-input img{
+    width: 10%;
+}
+.media-kits-upload .form-input img.loaded-image {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+}
+
+
+.nav > li {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+    width: 50%;
+}
+.nav-tabs > li > a {
+    font-size: 15px;
+    color: #9D9DA8;
+    border: 1px solid #F7F7F7 !important;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    color: #ee2534;
+    cursor: default;
+    border-bottom: 2px solid #ee2534 !important;
+    border-right: none !important;
+    border-left: none !important;
+}
+
+#myTabContent{
+    background-color: #F8F9FB;
+    padding-bottom: 2rem;
+}
+
+#myTabContent .tabs-content-intro{
+    background: #fff;
+    padding: 1rem 4rem;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#myTabContent .tabs-content-intro p{
+    text-align: center;
+}
+#myTabContent .tabs-content-intro .intro-btns{
+    text-align: center;
+}
+
+
+#myTabContent .tabs-content-intro .intro-btns a{
+    border: none;
+    font-size: 12px;
+    padding: .5rem 2.8rem
+}
+
+#myTabContent .tabs-content-intro .intro-btns a.accept{
+    background-color: #ee2534;
+    color: #fff;
+}
+
+#myTabContent .tabs-content-intro .intro-btns a.declind{
+    background-color: #EBECEE;
+
+}
+
+#myTabContent .tabs-content-intro .intro-icon{
+    margin-left: -12%;
+    margin-top: 1%;
+}
+#myTabContent .tabs-content-intro .intro-icon i{
+    font-size: 3rem;
+    background-color: #ee2534;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 50%;
+}
+
+
+/*css for login page*/
+
+input#user_login, input#user_pass{
+    width: 100%;
+    padding: 0 15px;
+    font-weight: 500;
+    min-height: 40px;
+    font-size: 14px;
+    border: none;
+}
+
+.buddypress-submit-wrapper .submit input.user-submit{
+    border-radius: 25px;
+    padding: 10px 25px;
+    color: #fff;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    height: auto;
+    width: 100%;
+    font-size: 16px;
+}
+.buddypress-submit-wrapper .submit input.user-submit:hover,
+.buddypress-submit-wrapper .submit input.user-submit:focus{
+    background-color: #f7f7f7;
+    color: #444444;
+    border: 1px solid ;
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.forgot-pass.right{
+    float: right;
+}
+
+form#edit-user-data,
+#edit-user-save,
+#edit-user-cancel{
+    display: none;
+}
+
+.row.user-address-edit .col-md-4 .bootstrap-select .dropdown-toggle .filter-option-inner-inner,
+.row.user-address-edit .col-md-4 .bootstrap-select:not(.input-group-btn),
+.row.user-address-edit .col-md-4 .bootstrap-select[class*=col-],
+.row.user-address-edit .col-md-4 #buddypress button:not(.multiselect):active,
+.row.user-address-edit .col-md-4 #buddypress button:not(.multiselect):focus{
+    background-color: #CFD3D5 !important;
+    border-radius: 30px !important;
+
+}
+
+#buddypress button:not(.multiselect):active,
+#buddypress button:not(.multiselect):focus{
+    background-color: transparent;
+    outline: none !important;
+}
+
+.first-name-edit,
+.last-name-edit,
+.location-edit,
+.description-edit{
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-color: #CFD3D5;
+    border-radius: 20px;
+}
+form#edit-user-data{
+    width: 65%;
+}
+
+

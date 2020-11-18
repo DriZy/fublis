@@ -2,7 +2,7 @@
 
 /*
  * Template Name: Register Page
- * description: >-
+ * description:
   Page template without sidebar
  */
 

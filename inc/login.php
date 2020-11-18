@@ -4,6 +4,19 @@
 # User login
 #------------------------------------
 
+function drizy_redirect(){
+    global $pagenow;
+    if( 'wp-login.php' == $pagenow ) {
+        if  ( isset( $_POST['wp-submit'] ) ||   // in case of LOGIN
+            ( isset($_GET['action']) && $_GET['action']=='logout') ||   // in case of LOGOUT
+            ( isset($_GET['checkemail']) && $_GET['checkemail']=='confirm') ||   // in case of LOST PASSWORD
+            ( isset($_GET['checkemail']) && $_GET['checkemail']=='registered') ) return;    // in case of REGISTER
+        else wp_redirect( home_url('/login') ); // or wp_redirect(home_url('/login'));
+        exit();
+    }
+}
+add_action('init','drizy_redirect');
+
 function drizy_login_verification(){
 
     // echo "hi it's working";
@@ -34,7 +47,7 @@ function drizy_login_verification(){
         if(in_array( 'administrator', (array) $user->roles ) ){
             $response['redirect_to'] = home_url('/wp-admin');
         }
-        $response['redirect_to'] = home_url('/members/'.$user_signon->user_nicename.'/');
+        $response['redirect_to'] = home_url('/complete-profile/');
     }
     echo json_encode($response);
     die();

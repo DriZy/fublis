@@ -17,16 +17,28 @@ Function drizy_enqueue_scripts()
     wp_enqueue_style('childstyle');
     wp_register_style('bootstrap-select-styles', get_stylesheet_directory_uri() . '/css/bootstrap-select.min.css');
     wp_enqueue_style('bootstrap-select-styles');
-  
 
-    wp_register_script('update-user', get_stylesheet_directory_uri() . '/js/fublis.js', array('jquery'), '1.0', true);
-    wp_localize_script('update-user', 'userUpdate', array('ajaxurl' => admin_url('admin-ajax.php')));
-    wp_enqueue_script('update-user');
+    wp_register_script('fublis_custom_js', get_stylesheet_directory_uri() . '/js/fublis.js', array('jquery'), '1.0', true);
+    wp_localize_script('fublis_custom_js', 'fublisJs', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('fublis_custom_js');
+
+    wp_register_script('drizy-login-js', get_stylesheet_directory_uri() . '/js/login.js', array('jquery'), '1.0', true);
+    wp_localize_script('drizy-login-js', 'drizyLogin', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('drizy-login-js');
+
+    wp_register_script('drizy-file-upload-js', get_stylesheet_directory_uri() . '/js/upload_file.js', array('jquery'), '1.0', true);
+    wp_localize_script('drizy-file-upload-js', 'drizyFileUpload', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('drizy-file-upload-js');
 
 
     wp_register_script('bootstrap-select-js', get_stylesheet_directory_uri() . '/js/bootstrap-select.min.js', array('jquery'), '1.0', true);
     //    wp_localize_script('select2-js', 'drizyLogin', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_enqueue_script('bootstrap-select-js');
+
+    //this function enqueues all scripts required for media uploader to work
+    wp_enqueue_media();
+
+//    wp_enqueue_script('tabs_js', get_stylesheet_directory_uri() . '/js/tabs.js', array('jquery'), null, true);
 
 }
 
@@ -37,9 +49,10 @@ require get_stylesheet_directory() . '/inc/project_cpt.php';
 require get_stylesheet_directory() . '/inc/meta_boxes.php';
 require get_stylesheet_directory() . '/inc/vc-custom-actions.php';
 require get_stylesheet_directory() . '/inc/vc-grid-shortcodes.php';
-// require get_stylesheet_directory() . '/inc/registration.php';
-// require get_stylesheet_directory() . '/inc/user_profile_fields.php';
+require get_stylesheet_directory() . '/inc/activate_user.php';
 require get_stylesheet_directory() . '/inc/login.php';
+require get_stylesheet_directory() . '/inc/pwd_reset.php';
+require get_stylesheet_directory() . '/inc/profile_update.php';
 
 //drizy custom image sizes
 function drizy_custom_image_sizes()
@@ -50,6 +63,35 @@ function drizy_custom_image_sizes()
 
 add_action('after_setup_theme', 'drizy_custom_image_sizes');
 
+// Set BP to use wp_mail
+add_filter( 'bp_email_use_wp_mail', '__return_true' );
+ 
+// Set messages to HTML
+remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
+add_filter( 'wp_mail_content_type', 'set_html_content_type' );
+function set_html_content_type() {
+    return 'text/html';
+}
+ 
+// Use HTML template
+add_filter( 'bp_email_get_content_plaintext', 'get_bp_email_content_plaintext', 10, 4 );
+function get_bp_email_content_plaintext( $content = '', $property = 'content_plaintext', $transform = 'replace-tokens', $bp_email ) {
+    if ( ! did_action( 'bp_send_email' ) ) {
+        return $content;
+    }
+    return $bp_email->get_template( 'add-content' );
+}
+ 
+// Optionally change your email address and from name.
+add_filter('wp_mail_from','noreply_from');
+function noreply_from($from) {
+  return 'noreply@YOUR_DOMAIN.org'; //Replace 'YOUR_DOMAIN.org' with email address
+}
+ 
+add_filter('wp_mail_from_name','noreply_from_name');
+function noreply_from_name($name) {
+    return 'YOUR_DOMAIN No-Reply'; //Replace 'YOUR_DOMAIN No-Reply' with the from name
+}
 
 /*
  * Buddypress register
@@ -278,17 +320,6 @@ function saveNewParseUser($newUserId) {
 
     exit;*/
 }
-
 add_action('user_register', 'saveNewParseUser');
 
-/*function dm_update_user_meta() {
-    $args = [
-        'ID' => 49, // this is the ID of the user you want to update.
-        'first_name' => 'first_name',
-        'last_name' => 'last_name'
-    ];
 
-    wp_update_user($args);
-}
-
-add_action('init', 'dm_update_user_meta');*/

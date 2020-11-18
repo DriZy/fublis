@@ -15,6 +15,7 @@
 
 $first_name = (!empty($_POST['signup_firstname'])) ? trim($_POST['signup_firstname']) : '';
 $last_name = (!empty($_POST['signup_lastname'])) ? trim($_POST['signup_lastname']) : '';
+$user_email = (!empty($_POST['signup_email'])) ? trim($_POST['signup_email']) : '';
 $is_tou_accepted = false;
 
 ?>
@@ -25,7 +26,7 @@ $is_tou_accepted = false;
 
         <div>
             <div class="text-right">
-                Already have an account? &nbsp; <a class="btn btn-primary text-uppercase">Sign In</a>
+                Already have an account? &nbsp; <a href="<?php echo get_home_url().'/login'; ?>" class="btn btn-primary text-uppercase">Sign In</a>
             </div>
 
             <div class="text-center">
@@ -50,8 +51,8 @@ $is_tou_accepted = false;
     <div class="page" id="register-page">
 
         <form action="" name="signup_form" id="signup_form" class="standard-form col-md-8 col-lg-6 pl-lg-6"
-              method="post"
-              enctype="multipart/form-data">
+              method="post"enctype="multipart/form-data"
+              >
 
             <?php if ('registration-disabled' == bp_get_current_signup_step()) : ?>
 
@@ -126,7 +127,7 @@ $is_tou_accepted = false;
                              echo '</pre>';*/
 
                             //  echo '<pre>';
-                            //  var_dump($_POST);
+//                              var_dump($_POST);
                             //  echo '</pre>';
                             ?>
 
@@ -621,20 +622,20 @@ $is_tou_accepted = false;
                                 'first_name' => $first_name,
                                 'last_name' => $last_name
                             ];
+//
+//                             var_dump($user_id);
+//
+//                             echo '<br><br>';
+//
+//                             var_dump($user_email);
+//                             var_dump($);
+//
+//                             echo '<br><br>';
+//
+//
+//                             wp_update_user($args);
 
-                            var_dump($user_id);
-
-                            echo '<br><br>';
-
-                            var_dump($first_name);
-
-                            echo '<br><br>';
-
-                            var_dump($last_name);
-
-                            wp_update_user($args);
-
-                            exit;
+                            // exit;
                         }
                         ?>
 
@@ -655,11 +656,9 @@ $is_tou_accepted = false;
                             <h2 class="registration-confirm__heading">Confirm your account</h2>
 
                             <p class="text-light-grey registration-confirm__text">
-                                <?php _e('Before proceeding, we need to confirm your account. Check your email and click the verification link to continue.', 'buddypress'); ?>
-                                <?php _e('<a>Did not receive it? Resent email</>', 'buddypress'); ?>
-
+                                <?php _e('Before proceeding, we need to confirm your account. Check your email and click the verification link to continue.', 'buddypress'); ?><br>
+                                <?php _e('Did not receive it? <a id="activation_email_resend" data-email="'.$user_email.'" data-id="'.$user_id.'" href="#">Resent email</a>', 'buddypress');  ?>
                             </p>
-
                         </div>
 
                     <?php else : ?>
@@ -690,6 +689,7 @@ $is_tou_accepted = false;
         </form>
 
     </div>
+    <p class="resend_activation_email_message" id="resend_activation_email_message" style="text-align: center; font-family: san-serif; font-size: 21px;"></p>
 
     <?php
 

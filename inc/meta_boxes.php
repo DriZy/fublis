@@ -80,7 +80,7 @@ function drizy_fublis_metaboxes($meta_boxes)
             [
                 'id' => 'project_files',
                 'type' => 'file_upload',
-                'name' => esc_html__("Exercise Files", 'drizy'),
+                'name' => esc_html__("Project Files", 'drizy'),
                 'desc' => esc_html__('Upload the exercise files for this lesson.', 'drizy'),
                 'force_delete' => false,
             ],
