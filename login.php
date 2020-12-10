@@ -1,9 +1,8 @@
 <?php
-/**
- * BuddyPress - Members Login
- *
- * @package BuddyPress
- * @subpackage bp-legacy
+/*
+ * Template Name: Login
+ * description: >-
+  Page template without sidebar
  */
 
 get_header();

@@ -599,11 +599,11 @@ section.user-info .container{
 
 .image-upload-one .form-input img#profile-pic-update-preview {
     width: 50rem;
-    height: 16rem;
+    height: 10rem;
     padding: 5rem;
     cursor:pointer;
     background:#F7DAEB;
-    border-radius: 20px;
+    border-radius: 2px;
     pointer-events: none;
 }
 

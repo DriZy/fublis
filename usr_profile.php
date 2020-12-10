@@ -10,6 +10,9 @@ get_header();
 /***************************************************
  * :: First section
  ***************************************************/
+if(!is_user_logged_in()){
+    wp_redirect(home_url('/login'));
+}
 $user = get_current_user_id();
 ?>
 <div id="buddypress">
@@ -27,7 +30,7 @@ $user = get_current_user_id();
                                     <?php
                                     $profile_pic =  get_user_meta($user, 'profile_pic', true);
                                     $prev_pic_url =  get_stylesheet_directory_uri().'/img/profile/camera.png';
-                                    $pic_title = get_user_meta($user_id, 'pic_title', true);
+                                    $pic_title = get_user_meta($user, 'pic_title', true);
                                     if(empty($profile_pic)){
                                         echo '<img id="profile-pic-update-preview" src="'.$prev_pic_url.'">' ;
                                     }else{
@@ -53,7 +56,7 @@ $user = get_current_user_id();
                     <h3 class="user-name"><?php echo get_user_meta($user, 'first_name', true); ?> <?php echo get_user_meta($user, 'last_name', true); ?></h3>
                 </div>
                 <div class="user-occupation-location">
-                    <p class="user-occupation"><?php echo get_user_meta($user, 'user_occupation', true); ?> <?php echo get_user_meta($user, 'user_location', true); ?></p>
+                    <p class="user-occupation"><?php echo get_user_meta($user, 'user_occupation', true); ?> from <?php echo get_user_meta($user, 'user_location', true); ?></p>
                 </div>
                 <div class="user-description-btn" align="center">
                     <a id="user-description-btn" class="btn btn-default"><i class="fa fa-plus"></i> Description </a>

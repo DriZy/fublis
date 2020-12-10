@@ -1,4 +1,4 @@
-/* login modal*/
+/* login js*/
 jQuery(function ($) {
     $(document).ready(function () {
         $("#user-login").on('click', function (e) {
@@ -27,22 +27,18 @@ jQuery(function ($) {
                         user_name: user_name,
                         password: password,
                         action: "drizy_login_verification"
-                        // 'security': $('#loginModal #fublis-security').val()
                     },
-                    preloader: false,
+                    // preloader: false,
                     success: function (data) {
+                        // alert('rturned message');
                         console.log(data);
                         if (data.type === "error") {
+                            // console.log(data.msg);
                             $("#drizy-login-result").addClass('error').html(data.message);
-
                         } else {
                             $("#drizy-login-result").addClass('success').html(data.message);
-                            // e.currentTarget.submit();
-                            if (data.redirect_to) {
-                                document.location.href = data.redirect_to;
-                            } else {
-                                // document.location.href = redirect_to;
-                            }
+                            console.log(data.redirect_to);
+                            document.location.href = data.redirect_to;
                         }
                     }
                 });
@@ -76,7 +72,6 @@ jQuery(function ($) {
                         user_login: user_login,
                         action: "drizy_retrieve_password"
                     },
-                    preloader: false,
                     success: function (data) {
                         console.log(data);
                         // if (data.type === "error") {

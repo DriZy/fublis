@@ -85,12 +85,12 @@ function get_bp_email_content_plaintext( $content = '', $property = 'content_pla
 // Optionally change your email address and from name.
 add_filter('wp_mail_from','noreply_from');
 function noreply_from($from) {
-  return 'noreply@YOUR_DOMAIN.org'; //Replace 'YOUR_DOMAIN.org' with email address
+  return 'noreply@fublis.com'; //Replace 'YOUR_DOMAIN.org' with email address
 }
  
 add_filter('wp_mail_from_name','noreply_from_name');
 function noreply_from_name($name) {
-    return 'YOUR_DOMAIN No-Reply'; //Replace 'YOUR_DOMAIN No-Reply' with the from name
+    return 'FUblis'; //Replace 'YOUR_DOMAIN No-Reply' with the from name
 }
 
 /*
@@ -321,5 +321,44 @@ function saveNewParseUser($newUserId) {
     exit;*/
 }
 add_action('user_register', 'saveNewParseUser');
+
+//function redirect_login_page(){
+//
+//    // Store for checking if this page equals wp-login.php
+//    $page_viewed = basename( $_SERVER['REQUEST_URI'] );
+//
+//    // permalink to the custom login page
+//    $login_page  = home_url( '/login' );
+//
+//    if( $page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
+//        wp_redirect( $login_page );
+//        exit();
+//   }
+////elseif ($page_viewed == "wp-login.php?redirect_to=http%3A%2F%2Flocalhost%3A8485%2Fwp-admin%2F%3Floggedout%3Dtrue&reauth=1"){
+////        wp_redirect( $login_page );
+////        exit();
+////    }
+//    elseif (!is_user_logged_in() && $page_viewed == "wp-admin"){
+//        wp_redirect( $login_page );
+//        exit();
+//    }
+//}
+//
+//add_action( 'init','redirect_login_page' );
+
+
+// function prefix_login_redirect( $redirect_to, $request, $user ) {
+//     //If we are viewing the account page, redirect to it after logging in
+//     if( strpos( $redirect_to, 'complete-profile' ) !== false ) {
+//         //If user is an administrator, redirect to WordPress dashboard
+//         if( isset( $user->roles ) && is_array( $user->roles ) && in_array( 'administrator', $user->roles ) ) {
+//             return '/wp-admin/';
+//         }
+//         return esc_url( home_url( '/complete-profile/' ) );//Otherwise, redirect to account page
+//     }
+//     return $redirect_to;//Redirect to current page after logging in
+// }
+// add_filter( 'login_redirect', 'prefix_login_redirect', 10, 3 );
+
 
 
